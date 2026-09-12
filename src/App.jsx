@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import img1 from "./img/img1.jpeg"
 import img2 from "./img/img2.jpeg";
@@ -36,32 +36,31 @@ const amenities = [
 ];
 
 function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+  
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
+  }, []);
+
+
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
     });
   };
-
-    const [scrolled, setScrolled] = useState(false);
-  
-    useEffect(() => {
-  
-      const handleScroll = () => {
-        if (window.scrollY > 50) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-  
-    }, []);
-  
 // =========================
   // GALLERY STATE
   // =========================
@@ -79,19 +78,19 @@ function App() {
     },
     {
       image: img2,
-      alt: "Hostel Interior",
+      alt: "Hostel Room",
     },
     {
       image: img3,
-      alt: "Hostel Common Area",
+      alt: "Hostel Room",
     },
     {
       image: img4,
-      alt: "Hostel Bedroom",
+      alt: "Hostel Room",
     },
     {
       image: img5,
-      alt: "Hostel Living Space",
+      alt: "Hostel Room",
     },
   ];
 
@@ -124,14 +123,17 @@ function App() {
           <a className="navbar-brand" href="#home">
             <span>Shiv  Gajanan  PG  Studio  Rooms </span>
           </a>
-
           <button
-            className="navbar-toggler"
-            data-bs-toggle="collapse"
-            data-bs-target="#menu"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+  className="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#menu"
+  aria-controls="menu"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+>
+  <span className="navbar-toggler-icon"></span>
+</button>
 
           <div className="collapse navbar-collapse" id="menu">
 
@@ -777,7 +779,7 @@ function App() {
           {/* GOOGLE MAP */}
   <div className="map-container">
     <iframe
-      src="https://www.google.com/maps?q=Lane+No.+1,+Rakshak+Nagar,+Kharadi,+Pune,+Maharashtra+411014&output=embed"
+     src="https://www.google.com/maps?q=Lane+No.+1,+Rakshak+Nagar,+Kharadi,+Pune,+Maharashtra+411014&output=embed"
       width="100%"
       height="350"
       style={{ border: 0 }}
