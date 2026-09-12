@@ -6,7 +6,9 @@ import img3 from "./img/img3.jpeg";
 import img4 from "./img/img4.jpeg";
 import img5 from "./img/img5.jpeg";
 import outer from "./img/Outer.jpeg";
-
+import Entrance from "./img/Entrance.jpeg";
+import Dianning from "./img/Dianning Area.jpeg";
+import Parking from "./img/Parking Area.jpeg";
 const rooms = [
   {
     title: "Single Room",
@@ -71,6 +73,19 @@ function App() {
     {
       image: outer,
       alt: "Hostel Exterior",
+    },
+    {
+      image: Entrance,
+      alt: "Entrance",
+    },
+    {
+      image: Parking,
+      alt: "Parking Area",
+    },
+    
+    {
+      image: Dianning,
+      alt: "Dianning Area",
     },
     {
       image: img1,
